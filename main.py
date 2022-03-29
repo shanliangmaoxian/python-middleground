@@ -5,7 +5,7 @@ from datetime import *
 from dateutil.relativedelta import relativedelta
 import calendar
 import sqlite3
-import cale.add as dialog
+import cale as dialog
 
 win = tk.Tk()
 win.title("综合")
@@ -53,7 +53,7 @@ def today():
 
 # 弹出新增窗口
 def add():
-    dialog.Dialog(tk.Tk('bb'))
+    dialog.Dialog(tk.Tk())
 
 # 在窗口内创建按钮，以表格的形式依次排列
 
