@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.simpledialog as simpledialog
-from tkinter import W, E
+from tkinter import W, E, ttk
 
 
 class Dialog(simpledialog.Dialog):
@@ -13,7 +13,13 @@ class Dialog(simpledialog.Dialog):
 
         l_title = tk.Label(parent, text='分类：')
         l_title.grid(row=1, sticky=E)
-        e_title = tk.Entry(parent)
+        e_title = ttk.Combobox(
+            master=parent,  # 父容器
+            width=18,
+            state='readonly',  # 设置状态 normal(可选可输入)、readonly(只可选)、 disabled
+            cursor='arrow',  # 鼠标移动时样式 arrow, circle, cross, plus...
+            values=['生日', '旅游', '离职', '纪念日', '第一次认识', '其他重要事件'],  # 设置下拉框的选项
+            )
         e_title.grid(row=1, column=1, sticky=W)
 
         l_content = tk.Label(parent, text='内容：')
