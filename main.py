@@ -5,6 +5,7 @@ from datetime import *
 from dateutil.relativedelta import relativedelta
 import calendar
 import sqlite3
+import cale.add as dialog
 
 win = tk.Tk()
 win.title("综合")
@@ -50,12 +51,17 @@ def beforeMonth():
 def today():
     initCalendar(localTime)
 
+# 弹出新增窗口
+def add():
+    dialog.Dialog(tk.Tk('bb'))
+
 # 在窗口内创建按钮，以表格的形式依次排列
 
 frame = tk.Frame(win)
 tk.Button(frame, text=">", command=nextMonth).pack(side=RIGHT, padx="0", pady="0")
 tk.Button(frame, text="今天", command=today).pack(side=RIGHT, padx="0", pady="0")
 tk.Button(frame, text="<", command=beforeMonth).pack(side=RIGHT, padx="0", pady="0")
+tk.Button(frame, text="新增", command=add).pack(side=RIGHT, padx="2", pady="0")
 frame.grid(row=0, column=5, columnspan=2, sticky=E)
 
 calendar.setfirstweekday(firstweekday=6)
@@ -95,7 +101,7 @@ def initCalendar(localTime):
                 arr = [elem for elem in resData if int(elem[1][8:]) == dateArr[i][j]]
                 for item in arr:
                     idx = idx + 1
-                    tk.Label(frame, text=wrap('[' + item[1][0:4] + ']' + item[2]), font=("华文行楷", 12), justify=LEFT).grid(row=idx, column=1, sticky='w')
+                    tk.Label(frame, text=wrap('[' + item[1][0:4] + ']' + item[4]), font=("华文行楷", 12), justify=LEFT).grid(row=idx, column=1, sticky='w')
 
                 # 如果今天修改 背景色
                 if dateArr[i][j] == int(dayStr.get()) and todayMonty == monthStr.get():
